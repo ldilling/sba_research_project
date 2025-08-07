@@ -11,7 +11,7 @@ The majority of data cleaning, analysis, and visualization comes from the sba_an
 | Regional | $100 Billion > Assets > $10 Billion |
 | Community | Assets < $10 Billion |
 | Fintech | SBA Fintech List |
-| Other | None of the Above |
+| Other | Non-Fintech and Not FDIC Insured |
 
 
 - For a Copy of the SBA 7(a) data with financial institution size variables, contact me at: ldilling@umich.edu
