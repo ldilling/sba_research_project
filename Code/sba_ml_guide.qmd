@@ -1,6 +1,6 @@
 ---
 title: "A Brief Guide to Using R with Public Data"
-format: docx
+format: html
 editor: visual
 toc: true
 ---
@@ -9,7 +9,7 @@ toc: true
 
 This guide provides a practical template for using R to analyze public lending data from the Small Business Administration (SBA), including its Paycheck Protection Program (PPP) and 7(a) Loan programs. You'll learn how to clean and organize data, conduct exploratory analysis, build regression models, create impactful data visualizations, and apply machine learning methods for causal inference using random forests.
 
-We use real-world datasets to demonstrate each technique. In addition to SBA data, we also incorporate demographic and geographic information from the U.S. Census Bureau to improve our analysis with spatial and socioeconomic context along with data on the federal funds rate to demonstrate basic joining techniques. This guide uses a small subset of the PPP and 7(a) data, which can be found along with the project code on the project [Github page](https://github.com/ldilling/sba_research). The complete and most recent data can be found on the [SBA's Open Data page](https://data.sba.gov/dataset/).
+We use real-world datasets to demonstrate each technique. In addition to SBA data, we also incorporate demographic and geographic information from the U.S. Census Bureau to improve our analysis with spatial and socioeconomic context along with data on the federal funds rate to demonstrate basic joining techniques. This guide uses a small subset of the PPP and 7(a) data, which can be found along with the project code on the project [Github page](https://github.com/ldilling/sba_research_project). The complete and most recent data can be found on the [SBA's Open Data page](https://data.sba.gov/dataset/).
 
 While this guide walks through the logic and steps behind the analysis, it assumes prior familiarity with R syntax, functions, and data types. If you’re new to R or need a refresher, we’ve included a list of recommended resources at the end.
 
@@ -334,7 +334,7 @@ ggplot(data = df_joined) +
 
 Causal forests are a type of random forest machine learning algorithm that are designed to be useful for causal inference. These models can act as a bridge between machine learning and causal inference techniques. You can create causal forests in R using the [GRF](https://grf-labs.github.io/grf/) (Generalized Random Forests) package. Causal forest models find the Conditional Average Treatment Effects (CATEs), which estimate the effect of a treatment on particular subgroup. These models are also useful for dealing with observational data, where the treatment and control groups may not be randomly assigned.
 
-One way to address non-random assignment is through the [R-Learner orthogonalization](https://grf-labs.github.io/grf/REFERENCE.html#orthogonalization-the-r-learner) technique developed by Athey et al. You first get propensity scores and marginal outcomes by training two regression forests. Then you take the residuals of the propensity score and marginal outcomes and train the causal forest on these residuals. We create a small causal forest model below that estimates the treatment effects of using the 7(a) Express loan process on the initial interest rate of the loan. Afterwards we will discuss how to interpret the results and creating a variable importance plot for the model. A more detailed practical explanation of causal forests can be found on the [GRF package Github page](https://grf-labs.github.io/grf/index.html). I also conducted research on the effect of receiving a PPP loan on 7(a) loan amounts and interest rates that can be ***found here (link will be added later)***.
+One way to address non-random assignment is through the [R-Learner orthogonalization](https://grf-labs.github.io/grf/REFERENCE.html#orthogonalization-the-r-learner) technique developed by Athey et al. You first get propensity scores and marginal outcomes by training two regression forests. Then you take the residuals of the propensity score and marginal outcomes and train the causal forest on these residuals. We create a small causal forest model below that estimates the treatment effects of using the 7(a) Express loan process on the initial interest rate of the loan. Afterwards we will discuss how to interpret the results and creating a variable importance plot for the model. A more detailed practical explanation of causal forests can be found on the [GRF package Github page](https://grf-labs.github.io/grf/index.html). I also conducted research on the effect of receiving a PPP loan on 7(a) loan amounts and interest rates that can be found on the [project Github page](https://github.com/ldilling/sba_research_project).
 
 We start by cleaning our joined data frame to omit variables that we are not interested in having in the model. We also need to make sure that our variables are numeric. Then we assign our variables for the model. Our outcome of interest, initial interest rate, is Y, and our loan processing treatment variable is W. All other variables we have are going to be used as covariates in the model
 
