@@ -164,9 +164,7 @@ Future research using private administrative datasets, such as the Census Bureau
 
 ### SBA 7(a) Loan Approvals Over Time
 
-![](images/loan_approvals_by_month.png)
-
-### Loan Count and Institution Type
+### ![](images/loan_approvals_by_month.png)Loan Count and Institution Type
 
 | Institution Size | Total Loans | Loans \< \$100K | Proportion \< \$100K |
 |------------------|-------------|-----------------|----------------------|
